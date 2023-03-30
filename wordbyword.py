@@ -9,6 +9,7 @@ else:
 with open(file_name, "r") as f:
     lines = f.readlines()
 
+print(f"Processing subtitle using wordbyword..")
 for i, line in enumerate(lines):
     if re.match("^\d+\n$", line):
         continue
@@ -24,11 +25,8 @@ for i, line in enumerate(lines):
             word = re.search("<font.*?>(.*?)</font>", line).group(1)
             lines[i] = word + "\n"
 
-    print(f"Processing line {i+1}")
-
 new_file_name = file_name.split(".")[0] + "-wordbyword.srt"
-
 with open(new_file_name, "w") as f:
     f.writelines(lines)
 
-print(f"New subtitle file saved as {new_file_name}")
+print(f"Completed: File saved as {new_file_name}")
