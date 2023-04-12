@@ -1,15 +1,16 @@
 import sys
 import re
 
-if len(sys.argv) > 1 and sys.argv[1] == "-i" and len(sys.argv) > 2:
-    file_name = sys.argv[2]
+if len(sys.argv) == 2:
+    file_name = sys.argv[1]
 else:
-    sys.exit()
+    print("Incorrect argument. Usage: <script_name> <subtitle_file>")
+    exit(1)
 
 with open(file_name, "r") as f:
     lines = f.readlines()
 
-print(f"Processing subtitle using wordbyword..")
+print(f"Processing subtitle using wordbyword.. script by: willydev")
 for i, line in enumerate(lines):
     if re.match("^\d+\n$", line):
         continue
